@@ -13,17 +13,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-.custom-slider-bar { background-color: #000; padding: 9px; color: #fff; font-size: 17px; font-weight: bold; white-space: nowrap; overflow: hidden; position: relative; }
-.custom-slider-content { display: inline-block; padding-left: 100%; animation: custom-slide 70s linear infinite; white-space: nowrap; }
-.custom-slider-content span { display: inline-block; margin-right: 50px; }
-@keyframes custom-slide { from { transform: translateX(0%); } to { transform: translateX(-100%); } }
-
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
 header { background: #2c3e50; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 15px 40px; flex-wrap: wrap; }
 .logo-container { display: flex; align-items: center; gap: 15px; }
 header img { width: 80px; height: auto; border-radius: 10px; }
 .header-text h1 { margin: 0; font-size: 28px; color: #fff; }
 .header-text p { margin: 2px 0 0; font-size: 14px; color: #ddd; }
+
+.custom-slider-bar { background-color: #000; padding: 9px; color: #fff; font-size: 17px; font-weight: bold; white-space: nowrap; overflow: hidden; position: relative; }
+.custom-slider-content { display: inline-block; padding-left: 100%; animation: custom-slide 70s linear infinite; white-space: nowrap; }
+.custom-slider-content span { display: inline-block; margin-right: 50px; }
+@keyframes custom-slide { from { transform: translateX(0%); } to { transform: translateX(-100%); } }
 
 .book-slider { margin: 30px auto; max-width: 1000px; }
 .owl-carousel .owl-stage-outer { height: 420px !important; }
@@ -41,9 +41,23 @@ header img { width: 80px; height: auto; border-radius: 10px; }
 .cart-list { background: #f4f4f4; padding: 10px; border-radius: 6px; margin-bottom: 10px; font-size: 14px; }
 .cart-item { margin: 5px 0; }
 .total { font-weight: bold; margin-top: 10px; text-align: right; }
-.order-form button { color: white; border: none; cursor: pointer; transition: 0.3s; }
 #qrcode { text-align: center; margin-top: 15px; cursor: pointer; }
+
 footer { background: #2c3e50; color: white; text-align: center; padding: 15px; margin-top: 30px; font-size: 14px; }
+
+.trust-section, .reviews-section, .reviews-submit-section { max-width:600px; margin:30px auto; text-align:center; }
+.trust-section div { display:flex; justify-content:space-around; flex-wrap:wrap; gap:15px; font-size:16px; margin-bottom:10px; }
+.reviews-section .review { background:#fff; padding:15px; margin:10px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:left; }
+
+.payment-info { font-size:14px; text-align:center; margin:8px 0; color:#555; }
+.order-form button { background:#2980b9; color:white; }
+.order-form button:hover { background:#1c5d87; }
+.pay-button { padding:10px; border:none; border-radius:5px; color:white; cursor:pointer; transition:0.3s; }
+.pay-button:hover { opacity:0.9; }
+
+/* Money Back Guarantee Animation */
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+.money-back-badge { display:inline-block; background:#27ae60; color:white; padding:12px 20px; border-radius:10px; font-weight:bold; font-size:16px; box-shadow:0 4px 8px rgba(0,0,0,0.2); animation: pulse 2s infinite; margin-bottom:20px; }
 </style>
 </head>
 <body>
@@ -103,16 +117,45 @@ footer { background: #2c3e50; color: white; text-align: center; padding: 15px; m
     <input type="email" id="customerEmail" placeholder="Your Email" required>
     <input type="tel" id="customerPhone" placeholder="Your Phone" required>
     <textarea id="address" rows="3" placeholder="Shipping Address" required></textarea>
-    <button type="submit" style="background:#2980b9;">Submit Order via WhatsApp</button>
+    <button type="submit">Submit Order via WhatsApp</button>
   </form>
   <h3 style="text-align:center; margin:15px 0;">Or Pay Online</h3>
-  <button style="width:48%; margin-right:4%; background:#27ae60;" onclick="generateQRCode()">Pay via QR Code</button>
-  <button style="width:48%; background:#2980b9;" onclick="payViaUPIApp()">Pay via UPI App</button>
+  <button class="pay-button" style="width:48%; margin-right:4%; background:#27ae60;" onclick="generateQRCode()">Pay via QR Code</button>
+  <button class="pay-button" style="width:48%; background:#2980b9;" onclick="payViaUPIApp()">Pay via UPI App</button>
+  <div class="payment-info">🔒 Secure UPI Payments | 🚚 Free Shipping | 📦 Easy Returns</div>
   <div id="qrcode"></div>
 </section>
 
+<!-- Trust Section -->
+<section class="trust-section">
+  <div>
+    <div>🔒 Secure Payments</div>
+    <div>🚚 Free Shipping</div>
+    <div>⭐ Trusted Seller</div>
+    <div>📞 24/7 Support</div>
+  </div>
+  <!-- Money Back Guarantee Badge -->
+  <div class="money-back-badge">💰 100% Money Back Guarantee</div>
+</section>
+
+<!-- Customer Reviews -->
+<section class="reviews-section">
+  <h2 style="text-align:center;">🌟 Customer Reviews</h2>
+  <div class="review">⭐⭐⭐⭐⭐ “Fast delivery & excellent quality!” – Ritu S.</div>
+  <div class="review">⭐⭐⭐⭐⭐ “Loved the packaging and support.” – Ankit P.</div>
+  <div class="review">⭐⭐⭐⭐⭐ “Great service and product quality.” – Priya M.</div>
+</section>
+
+<!-- Submit Review Section -->
+<section class="reviews-submit-section">
+  <h2>✍️ Submit Your Review</h2>
+  <input type="text" id="reviewerName" placeholder="Your Name">
+  <textarea id="reviewText" rows="3" placeholder="Your Review"></textarea>
+  <button onclick="submitReview()">Submit Review</button>
+</section>
+
 <footer>
-  <p>© 2025 UsefullItems. All Rights Reserved.</p>
+  <p>© 2025 UsefullItems. All Rights Reserved | Privacy Policy</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -129,7 +172,7 @@ $(document).ready(function(){
 });
 
 let cart = [];
-const myWhatsAppNumber = "9877870280"; // change to your WhatsApp number
+const myWhatsAppNumber = "9877870280";
 
 function addToCart(title, qty, price){
   cart.push({title, qty, price});
@@ -208,9 +251,23 @@ function payViaUPIApp(){
   const upiURL=`upi://pay?pa=${upiID}&pn=${encodeURIComponent("UsefullItems")}&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
 
   sendWhatsAppMessage(name, phone, "UPI App Payment", cart, address, email);
-
-  // Open UPI app
   window.location.href = upiURL;
+}
+
+// Submit review
+function submitReview(){
+  const name = document.getElementById('reviewerName').value.trim();
+  const review = document.getElementById('reviewText').value.trim();
+  if(!name || !review){ alert("Please enter name and review."); return; }
+
+  const newReview = document.createElement('div');
+  newReview.className = 'review';
+  newReview.innerHTML = `⭐⭐⭐⭐⭐ ${review} – ${name}`;
+  document.querySelector('.reviews-section').appendChild(newReview);
+
+  document.getElementById('reviewerName').value = '';
+  document.getElementById('reviewText').value = '';
+  alert("Thank you for your review!");
 }
 </script>
 </body>
