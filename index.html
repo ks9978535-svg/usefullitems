@@ -13,261 +13,282 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
-header { background: #2c3e50; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 15px 40px; flex-wrap: wrap; }
-.logo-container { display: flex; align-items: center; gap: 15px; }
-header img { width: 80px; height: auto; border-radius: 10px; }
-.header-text h1 { margin: 0; font-size: 28px; color: #fff; }
-.header-text p { margin: 2px 0 0; font-size: 14px; color: #ddd; }
+body { font-family: 'Poppins', Arial, sans-serif; margin:0; padding:0; background:#f0f4f8; color:#333;}
+header { background:#1f3c88; color:#fff; display:flex; align-items:center; justify-content:space-between; padding:15px 40px; flex-wrap:wrap;}
+.logo-container { display:flex; align-items:center; gap:15px;}
+header img { width:80px; height:auto; border-radius:12px;}
+.header-text h1 { margin:0; font-size:28px; color:#fff;}
+.header-text p { margin:2px 0 0; font-size:14px; color:#cdd4e0;}
 
-.custom-slider-bar { background-color: #000; padding: 9px; color: #fff; font-size: 17px; font-weight: bold; white-space: nowrap; overflow: hidden; position: relative; }
-.custom-slider-content { display: inline-block; padding-left: 100%; animation: custom-slide 70s linear infinite; white-space: nowrap; }
-.custom-slider-content span { display: inline-block; margin-right: 50px; }
-@keyframes custom-slide { from { transform: translateX(0%); } to { transform: translateX(-100%); } }
+.custom-slider-bar { background:#ff6f61; padding:9px; color:#fff; font-size:17px; font-weight:bold; white-space:nowrap; overflow:hidden; position:relative;}
+.custom-slider-content { display:inline-block; padding-left:100%; animation: custom-slide 70s linear infinite; white-space:nowrap;}
+.custom-slider-content span { display:inline-block; margin-right:50px;}
+@keyframes custom-slide { from{transform:translateX(0%);} to{transform:translateX(-100%);}}
 
-.book-slider { margin: 30px auto; max-width: 1000px; }
-.owl-carousel .owl-stage-outer { height: 420px !important; }
-.book-slider .item { width: 250px; height: 380px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; background: #fff; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: auto; }
-.book-slider img { width: 150px; height: 200px; object-fit: contain; margin-bottom: 10px; }
-.book-slider h3 { margin: 5px 0; font-size: 18px; }
-.book-slider p { font-size: 14px; color: #555; }
-.button-group { display: flex; gap: 8px; justify-content: center; }
-.book-slider button { padding: 8px 12px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; font-size: 13px; }
-.book-slider button:hover { background: #219150; }
+.book-slider { margin:30px auto; max-width:1000px;}
+.owl-carousel .owl-stage-outer { height:420px !important;}
+.book-slider .item { width:250px; height:380px; display:flex; flex-direction:column; justify-content:space-between; align-items:center; background:#fff; padding:20px; border-radius:15px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.12); margin:auto; transition: transform 0.3s;}
+.book-slider .item:hover { transform:translateY(-5px);}
+.book-slider img { width:150px; height:200px; object-fit:contain; margin-bottom:10px; border-radius:8px;}
+.book-slider h3 { margin:5px 0; font-size:18px; color:#1f3c88;}
+.book-slider p { font-size:14px; color:#555;}
+.button-group { display:flex; gap:8px; justify-content:center;}
+.book-slider button { padding:8px 12px; background:#ff6f61; color:white; border:none; border-radius:6px; cursor:pointer; transition:0.3s; font-size:13px;}
+.book-slider button:hover { background:#e85b50;}
 
-.order-form { max-width: 600px; margin: 40px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.order-form h2 { text-align: center; margin-bottom: 20px; }
-.order-form input, .order-form textarea, .order-form button { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
-.cart-list { background: #f4f4f4; padding: 10px; border-radius: 6px; margin-bottom: 10px; font-size: 14px; }
-.cart-item { margin: 5px 0; }
-.total { font-weight: bold; margin-top: 10px; text-align: right; }
-#qrcode { text-align: center; margin-top: 15px; cursor: pointer; }
+.order-form { max-width:600px; margin:40px auto; background:#fff; padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+.order-form h2 { text-align:center; margin-bottom:20px; color:#1f3c88;}
+.order-form input, .order-form textarea, .order-form select, .order-form button { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px; font-size:14px;}
+.order-form button { background:#1f3c88; color:white; border:none; border-radius:8px; cursor:pointer; transition:0.3s;}
+.order-form button:hover { background:#152d66;}
+.cart-list { background:#f1f5f9; padding:10px; border-radius:10px; margin-bottom:15px; font-size:14px;}
+.cart-item { margin:5px 0;}
+.total { font-weight:bold; margin-top:10px; text-align:right;}
 
-footer { background: #2c3e50; color: white; text-align: center; padding: 15px; margin-top: 30px; font-size: 14px; }
+.order-summary { margin-top:15px; border:1px solid #ccc; border-radius:8px; padding:10px; background:#f9fafb;}
+.order-summary table { width:100%; border-collapse:collapse;}
+.order-summary th, .order-summary td { padding:8px; text-align:left; border-bottom:1px solid #ddd;}
+.order-summary th { background:#1f3c88; color:#fff;}
 
-.trust-section, .reviews-section, .reviews-submit-section { max-width:600px; margin:30px auto; text-align:center; }
-.trust-section div { display:flex; justify-content:space-around; flex-wrap:wrap; gap:15px; font-size:16px; margin-bottom:10px; }
-.reviews-section .review { background:#fff; padding:15px; margin:10px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:left; }
+#qrcode { text-align:center; margin-top:15px;}
 
-.payment-info { font-size:14px; text-align:center; margin:8px 0; color:#555; }
-.order-form button { background:#2980b9; color:white; }
-.order-form button:hover { background:#1c5d87; }
-.pay-button { padding:10px; border:none; border-radius:5px; color:white; cursor:pointer; transition:0.3s; }
-.pay-button:hover { opacity:0.9; }
+.trust-section { max-width:600px; margin:30px auto; text-align:center;}
+.trust-section div { display:flex; justify-content:space-around; flex-wrap:wrap; gap:15px; font-size:16px; margin-bottom:10px; color:#1f3c88; font-weight:500;}
+.money-back-badge { display:inline-block; background:#ff6f61; color:white; padding:12px 25px; border-radius:12px; font-weight:bold; font-size:16px; box-shadow:0 4px 8px rgba(0,0,0,0.2); animation:pulse 2s infinite; margin-bottom:20px;}
+@keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.05);} 100%{transform:scale(1);}}
 
-/* Money Back Guarantee Animation */
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-.money-back-badge { display:inline-block; background:#27ae60; color:white; padding:12px 20px; border-radius:10px; font-weight:bold; font-size:16px; box-shadow:0 4px 8px rgba(0,0,0,0.2); animation: pulse 2s infinite; margin-bottom:20px; }
+.reviews-section { max-width:700px; margin:40px auto; text-align:center;}
+.reviews-section h2 { color:#1f3c88; margin-bottom:20px;}
+.reviews-section .review { background:#fff; padding:20px; margin:15px 0; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.12); display:flex; align-items:flex-start; gap:15px; text-align:left; transition: transform 0.3s;}
+.reviews-section .review:hover { transform:translateY(-5px);}
+.reviews-section .review-avatar { width:50px; height:50px; border-radius:50%; background:#ff6f61; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;}
+.reviews-section .review-content { flex:1;}
+.reviews-section .review .stars { color:#f39c12; margin-bottom:5px; font-size:14px;}
+
+.reviews-submit-section { max-width:600px; margin:40px auto; text-align:center;}
+.reviews-submit-section input, .reviews-submit-section textarea, .reviews-submit-section select { width:100%; padding:12px; margin:5px 0; border-radius:8px; border:1px solid #ccc; font-size:14px;}
+.reviews-submit-section button { padding:12px 25px; background:#ff6f61; color:white; border:none; border-radius:8px; cursor:pointer; margin-top:5px; font-size:15px;}
+.reviews-submit-section button:hover { background:#e85b50;}
+
+footer { background:#1f3c88; color:white; text-align:center; padding:15px; margin-top:30px; font-size:14px;}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-container">
-    <img src="https://i.postimg.cc/DwmfyDw0/usefullitems.jpg">
-    <div class="header-text">
-      <h1>UsefullItems</h1>
-      <p>Email: ks9978535@gmail.com | Phone: 9914 349 657</p>
-    </div>
-  </div>
+<div class="logo-container">
+<img src="https://i.postimg.cc/DwmfyDw0/usefullitems.jpg">
+<div class="header-text">
+<h1>UsefullItems</h1>
+<p>Email: ks9978535@gmail.com | Phone: 9914 349 657</p>
+</div>
+</div>
 </header>
 
 <div class="custom-slider-bar">
-  <div class="custom-slider-content">
-    <span>🎉 FREE SHIPPING ON ONLINE PAYMENT! 🛍✨</span>
-    <span>🔥 LIMITED TIME OFFER - HURRY UP! ⏳</span>
-  </div>
+<div class="custom-slider-content">
+<span>🎉 FREE SHIPPING ON ONLINE PAYMENT! 🛍✨</span>
+<span>🔥 LIMITED TIME OFFER - HURRY UP! ⏳</span>
+</div>
 </div>
 
 <section class="book-slider owl-carousel owl-theme">
-  <div class="item">
-    <img src="https://targetpublications.org/_next/image?url=https%3A%2F%2Fcdn.targetpublications.org%2Fadmin%2Fproducts%2Fmedia%2Fimages%2F1297%2F20713_1.webp&w=640&q=75" alt="Book 1">
-    <h3>Book Title 1</h3>
-    <p><b>RS 400</b></p>
-    <div class="button-group">
-      <button onclick="addToCart('Book Title 1',1,400)">Add 1</button>
-      <button onclick="addToCart('Book Title 1',2,750)">Add 2 (₹750)</button>
-    </div>
-  </div>
-  <div class="item">
-    <img src="https://statmo.in/wp-content/uploads/2018/07/Classmate-Notebook-Single-Line-32-Page-600x607.jpg" alt="Book 2">
-    <h3>Book Title 2</h3>
-    <p><b>RS 600</b></p>
-    <div class="button-group">
-      <button onclick="addToCart('Book Title 2',1,600)">Add 1</button>
-      <button onclick="addToCart('Book Title 2',2,1100)">Add 2 (₹1100)</button>
-    </div>
-  </div>
-  <div class="item">
-    <img src="https://wallpapers.com/images/file/book-pictures-ebvjiijqn8kazosd.jpg" alt="Book 3">
-    <h3>Book Title 3</h3>
-    <p><b>RS 800</b></p>
-    <div class="button-group">
-      <button onclick="addToCart('Book Title 3',1,800)">Add 1</button>
-      <button onclick="addToCart('Book Title 3',2,1500)">Add 2 (₹1500)</button>
-    </div>
-  </div>
+<!-- Book items -->
+<div class="item">
+<img src="https://targetpublications.org/_next/image?url=https%3A%2F%2Fcdn.targetpublications.org%2Fadmin%2Fproducts%2Fmedia%2Fimages%2F1297%2F20713_1.webp&w=640&q=75" alt="Book 1">
+<h3>Book Title 1</h3>
+<p><b>RS 400</b></p>
+<div class="button-group">
+<button onclick="addToCart('Book Title 1',1,400)">Add 1</button>
+<button onclick="addToCart('Book Title 1',2,750)">Add 2 (₹750)</button>
+</div>
+</div>
+<div class="item">
+<img src="https://statmo.in/wp-content/uploads/2018/07/Classmate-Notebook-Single-Line-32-Page-600x607.jpg" alt="Book 2">
+<h3>Book Title 2</h3>
+<p><b>RS 600</b></p>
+<div class="button-group">
+<button onclick="addToCart('Book Title 2',1,600)">Add 1</button>
+<button onclick="addToCart('Book Title 2',2,1100)">Add 2 (₹1100)</button>
+</div>
+</div>
+<div class="item">
+<img src="https://wallpapers.com/images/file/book-pictures-ebvjiijqn8kazosd.jpg" alt="Book 3">
+<h3>Book Title 3</h3>
+<p><b>RS 800</b></p>
+<div class="button-group">
+<button onclick="addToCart('Book Title 3',1,800)">Add 1</button>
+<button onclick="addToCart('Book Title 3',2,1500)">Add 2 (₹1500)</button>
+</div>
+</div>
 </section>
 
 <section class="order-form">
-  <h2>📦 Place Your Order</h2>
-  <div class="cart-list" id="cartList">🛒 No items added yet.</div>
-  <form onsubmit="sendWhatsApp(event)">
-    <input type="text" id="customerName" placeholder="Your Name" required>
-    <input type="email" id="customerEmail" placeholder="Your Email" required>
-    <input type="tel" id="customerPhone" placeholder="Your Phone" required>
-    <textarea id="address" rows="3" placeholder="Shipping Address" required></textarea>
-    <button type="submit">Submit Order via WhatsApp</button>
-  </form>
-  <h3 style="text-align:center; margin:15px 0;">Or Pay Online</h3>
-  <button class="pay-button" style="width:48%; margin-right:4%; background:#27ae60;" onclick="generateQRCode()">Pay via QR Code</button>
-  <button class="pay-button" style="width:48%; background:#2980b9;" onclick="payViaUPIApp()">Pay via UPI App</button>
-  <div class="payment-info">🔒 Secure UPI Payments | 🚚 Free Shipping | 📦 Easy Returns</div>
-  <div id="qrcode"></div>
+<h2>📦 Place Your Order</h2>
+<div class="cart-list" id="cartList">🛒 No items added yet.</div>
+
+<div class="order-summary" id="orderSummary" style="display:none;">
+<table>
+<thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+<tbody id="summaryBody"></tbody>
+<tfoot>
+<tr><td colspan="2"><b>Normal Total</b></td><td id="normalTotal">₹0</td></tr>
+<tr><td colspan="2"><b>COD Extra</b></td><td id="codExtra">₹0</td></tr>
+<tr><td colspan="2"><b>Total Payable</b></td><td id="totalPayable">₹0</td></tr>
+</tfoot>
+</table>
+</div>
+
+<form onsubmit="sendWhatsApp(event)">
+<input type="text" id="customerName" placeholder="Your Name" required>
+<input type="email" id="customerEmail" placeholder="Your Email" required>
+<input type="tel" id="customerPhone" placeholder="Your Phone" required>
+<textarea id="address" rows="3" placeholder="Shipping Address" required></textarea>
+<select id="paymentMethod" onchange="updateTotal(); toggleUPIButton()">
+<option value="">Select Payment Method</option>
+<option value="Cash on Delivery">Cash on Delivery (+₹50)</option>
+<option value="Online Payment">Online Payment</option>
+</select>
+<button type="submit">Submit Order via WhatsApp</button>
+<a id="upiButton" href="#" onclick="generateQRCode()" style="display:none; margin-top:10px; text-decoration:none; color:white; display:flex; justify-content:center; align-items:center; padding:12px; border-radius:8px; background:#ff6f61;">Pay via UPI</a>
+<div id="qrcode"></div>
+</form>
 </section>
 
-<!-- Trust Section -->
 <section class="trust-section">
-  <div>
-    <div>🔒 Secure Payments</div>
-    <div>🚚 Free Shipping</div>
-    <div>⭐ Trusted Seller</div>
-    <div>📞 24/7 Support</div>
-  </div>
-  <!-- Money Back Guarantee Badge -->
-  <div class="money-back-badge">💰 100% Money Back Guarantee</div>
+<div>
+<div>🔒 Secure Payments</div>
+<div>🚚 Free Shipping</div>
+<div>⭐ Trusted Seller</div>
+<div>📞 24/7 Support</div>
+</div>
+<div class="money-back-badge">💰 100% Money Back Guarantee</div>
 </section>
 
-<!-- Customer Reviews -->
 <section class="reviews-section">
-  <h2 style="text-align:center;">🌟 Customer Reviews</h2>
-  <div class="review">⭐⭐⭐⭐⭐ “Fast delivery & excellent quality!” – Ritu S.</div>
-  <div class="review">⭐⭐⭐⭐⭐ “Loved the packaging and support.” – Ankit P.</div>
-  <div class="review">⭐⭐⭐⭐⭐ “Great service and product quality.” – Priya M.</div>
+<h2>🌟 Customer Reviews</h2>
 </section>
 
-<!-- Submit Review Section -->
 <section class="reviews-submit-section">
-  <h2>✍️ Submit Your Review</h2>
-  <input type="text" id="reviewerName" placeholder="Your Name">
-  <textarea id="reviewText" rows="3" placeholder="Your Review"></textarea>
-  <button onclick="submitReview()">Submit Review</button>
+<h2>✍️ Submit Your Review</h2>
+<input type="text" id="reviewerName" placeholder="Your Name">
+<select id="reviewStars">
+<option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+<option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+<option value="⭐⭐⭐">⭐⭐⭐</option>
+<option value="⭐⭐">⭐⭐</option>
+<option value="⭐">⭐</option>
+</select>
+<textarea id="reviewText" rows="3" placeholder="Your Review"></textarea>
+<button onclick="submitReview()">Submit Review</button>
 </section>
 
 <footer>
-  <p>© 2025 UsefullItems. All Rights Reserved | Privacy Policy</p>
+<p>© 2025 UsefullItems. All Rights Reserved | Privacy Policy</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
 $(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    loop:true,
-    margin:15,
-    nav:true,
-    autoplay:false,
-    responsive:{0:{items:1},600:{items:2},1000:{items:3}}
-  });
+$(".owl-carousel").owlCarousel({
+loop:true, margin:15, nav:true, autoplay:false, responsive:{0:{items:1},600:{items:2},1000:{items:3}}
+});
 });
 
-let cart = [];
-const myWhatsAppNumber = "9877870280";
+let cart=[];
+const myWhatsAppNumber="9877870280";
 
 function addToCart(title, qty, price){
-  cart.push({title, qty, price});
-  updateCartDisplay();
-  window.scrollTo({ top: document.querySelector(".order-form").offsetTop, behavior: "smooth" });
+cart.push({title, qty, price});
+updateCartDisplay();
+updateTotal();
+window.scrollTo({ top: document.querySelector(".order-form").offsetTop, behavior: "smooth" });
 }
 
 function updateCartDisplay(){
-  let cartList = document.getElementById("cartList");
-  if(cart.length===0){ cartList.innerHTML="🛒 No items added yet."; return; }
-  let html="", total=0;
-  cart.forEach((item,i)=>{
-    html+=`<div class='cart-item'>${i+1}. ${item.title} — Qty: ${item.qty} — ₹${item.price}</div>`;
-    total+=item.price;
-  });
-  html+=`<div class='total'>Total: ₹${total}</div>`;
-  cartList.innerHTML = html;
+let cartList=document.getElementById("cartList");
+if(cart.length===0){ cartList.innerHTML="🛒 No items added yet."; return; }
+let html="";
+cart.forEach((item,i)=>{
+html+=`<div class='cart-item'>${i+1}. ${item.title} — Qty: ${item.qty} — ₹${item.price}</div>`;
+});
+cartList.innerHTML=html;
+updateSummaryTable();
+}
+
+function updateSummaryTable(){
+const summaryBody=document.getElementById('summaryBody');
+summaryBody.innerHTML="";
+cart.forEach(item=>{
+summaryBody.innerHTML+=`<tr><td>${item.title}</td><td>${item.qty}</td><td>₹${item.price}</td></tr>`;
+});
+document.getElementById('orderSummary').style.display = cart.length>0 ? 'block' : 'none';
+updateTotal();
+}
+
+function getTotals(){
+let normalTotal=cart.reduce((sum,item)=>sum+item.price,0);
+let paymentMethod=document.getElementById("paymentMethod").value;
+let codExtra=(paymentMethod=="Cash on Delivery")?50:0;
+let totalPayable=normalTotal+codExtra;
+return {normalTotal,codExtra,totalPayable,paymentMethod};
+}
+
+function updateTotal(){
+const totals=getTotals();
+document.getElementById("normalTotal").innerText="₹"+totals.normalTotal;
+document.getElementById("codExtra").innerText="₹"+totals.codExtra;
+document.getElementById("totalPayable").innerText="₹"+totals.totalPayable;
+toggleUPIButton();
+}
+
+function toggleUPIButton(){
+const method=document.getElementById("paymentMethod").value;
+document.getElementById("upiButton").style.display=(method=="Online Payment")?"flex":"none";
 }
 
 function sendWhatsApp(event){
-  event.preventDefault();
-  if(cart.length===0){ alert("Please add at least one item."); return; }
-  let name=document.getElementById("customerName").value;
-  let email=document.getElementById("customerEmail").value;
-  let phone=document.getElementById("customerPhone").value;
-  let address=document.getElementById("address").value;
-  sendWhatsAppMessage(name, phone, "Form Submission", cart, address, email);
+event.preventDefault();
+if(cart.length===0){ alert("Please add at least one item."); return; }
+let name=document.getElementById("customerName").value;
+let email=document.getElementById("customerEmail").value;
+let phone=document.getElementById("customerPhone").value;
+let address=document.getElementById("address").value;
+const totals=getTotals();
+if(!totals.paymentMethod){ alert("Please select a payment method."); return; }
+let cartDetails=cart.map((item,i)=>`${i+1}. ${item.title} (Qty: ${item.qty}) — ₹${item.price}`).join("\n");
+let msg=`📦 New Order:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nItems:\n${cartDetails}\nPayment Method: ${totals.paymentMethod}\nTotal (Online): ₹${totals.normalTotal}\nTotal (${totals.paymentMethod}): ₹${totals.totalPayable}\nAddress: ${address}`;
+window.open("https://wa.me/"+myWhatsAppNumber+"?text="+encodeURIComponent(msg),"_blank");
 }
 
-function sendWhatsAppMessage(name, phone, paymentMethod, cartItems, address="", email=""){
-  let cartDetails = cartItems.map((item,i)=>`${i+1}. ${item.title} (Qty: ${item.qty}) — ₹${item.price}`).join("\n");
-  let total = cartItems.reduce((sum,item)=>sum+item.price,0);
-  let msg = `📦 New Order:
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Items:\n${cartDetails}
-Total: ₹${total}
-Payment method: ${paymentMethod}
-Address: ${address}`;
-  window.open("https://wa.me/"+myWhatsAppNumber+"?text="+encodeURIComponent(msg),"_blank");
-}
-
-// QR Code payment
 function generateQRCode(){
-  if(cart.length===0){ alert("Please add items to cart."); return; }
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const email=document.getElementById("customerEmail").value.trim();
-  const address=document.getElementById("address").value.trim();
-  if(!name || !phone){ alert("Enter name & phone before payment."); return; }
-
-  document.getElementById("qrcode").innerHTML="";
-  let total = cart.reduce((sum,item)=>sum+item.price,0);
-  const upiID="ks9978535@ptyes";
-  const note=`Order by ${name}, ${phone}`;
-  const upiURL=`upi://pay?pa=${upiID}&pn=${encodeURIComponent("UsefullItems")}&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
-  new QRCode(document.getElementById("qrcode"), { text: upiURL, width:180, height:180 });
-
-  sendWhatsAppMessage(name, phone, "QR Code Payment", cart, address, email);
-  alert(`Scan QR to pay ₹${total}. WhatsApp alert sent.`);
+if(cart.length===0){ alert("Please add items to cart."); return; }
+let total=cart.reduce((sum,item)=>sum+item.price,0);
+const upiID="ks9978535@ptyes";
+const name="UsefullItems";
+const upiURL=`upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${total}&cu=INR`;
+document.getElementById("qrcode").innerHTML="";
+new QRCode(document.getElementById("qrcode"), { text:upiURL, width:180, height:180 });
+// Open UPI app on mobile
+window.location.href=upiURL;
 }
 
-// UPI App payment
-function payViaUPIApp(){
-  if(cart.length===0){ alert("Please add items to cart."); return; }
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const email=document.getElementById("customerEmail").value.trim();
-  const address=document.getElementById("address").value.trim();
-  if(!name || !phone){ alert("Enter name & phone before payment."); return; }
-
-  let total = cart.reduce((sum,item)=>sum+item.price,0);
-  const upiID="ks9978535@ptyes";
-  const note=`Order by ${name}, ${phone}`;
-  const upiURL=`upi://pay?pa=${upiID}&pn=${encodeURIComponent("UsefullItems")}&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
-
-  sendWhatsAppMessage(name, phone, "UPI App Payment", cart, address, email);
-  window.location.href = upiURL;
-}
-
-// Submit review
+// Reviews
 function submitReview(){
-  const name = document.getElementById('reviewerName').value.trim();
-  const review = document.getElementById('reviewText').value.trim();
-  if(!name || !review){ alert("Please enter name and review."); return; }
-
-  const newReview = document.createElement('div');
-  newReview.className = 'review';
-  newReview.innerHTML = `⭐⭐⭐⭐⭐ ${review} – ${name}`;
-  document.querySelector('.reviews-section').appendChild(newReview);
-
-  document.getElementById('reviewerName').value = '';
-  document.getElementById('reviewText').value = '';
-  alert("Thank you for your review!");
+const name=document.getElementById('reviewerName').value.trim();
+const review=document.getElementById('reviewText').value.trim();
+const stars=document.getElementById('reviewStars').value;
+if(!name || !review){ alert("Please enter name and review."); return; }
+const avatarLetter=name.charAt(0).toUpperCase();
+const newReview=document.createElement('div');
+newReview.className='review';
+newReview.innerHTML=`<div class="review-avatar">${avatarLetter}</div><div class="review-content"><div class="stars">${stars}</div>${review} – ${name}</div>`;
+document.querySelector('.reviews-section').appendChild(newReview);
+document.getElementById('reviewerName').value='';
+document.getElementById('reviewText').value='';
+document.getElementById('reviewStars').value='⭐⭐⭐⭐⭐';
+alert("Thank you for your review!");
 }
 </script>
 </body>
