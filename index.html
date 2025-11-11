@@ -14,7 +14,7 @@ body {
   font-family: 'Poppins', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f3f6fa; /* blue-white theme */
+  background: #f3f6fa;
   color: #333;
 }
 
@@ -69,7 +69,7 @@ header img {
 .custom-slider-content {
   display: inline-block;
   padding-left: 100%;
-  animation: custom-slide 70s linear infinite;
+  animation: custom-slide 40s linear infinite;
   white-space: nowrap;
 }
 
@@ -394,7 +394,7 @@ footer {
 
 <section class="book-slider owl-carousel owl-theme">
   <div class="item">
-    <img src=https://peakpick23.com/cdn/shop/files/Screenshot2023-08-06112036.png?v=1691317245 alt="portable Juicer Blender">
+    <img src="https://peakpick23.com/cdn/shop/files/Screenshot2023-08-06112036.png?v=1691317245" alt="portable Juicer Blender">
     <h3>portable Juicer Blender 1</h3>
     <p><b>RS 899</b></p>
     <div class="button-group">
@@ -403,7 +403,7 @@ footer {
     </div>
   </div>
   <div class="item">
-    <img src=https://m.media-amazon.com/images/I/51HRjhPHHoL._AC_UF894,1000_QL80_.jpg alt="Book 2">
+    <img src="https://m.media-amazon.com/images/I/51HRjhPHHoL._AC_UF894,1000_QL80_.jpg" alt="Book 2">
     <h3>Portable juicer blender 2</h3>
     <p><b>RS 999</b></p>
     <div class="button-group">
@@ -412,7 +412,7 @@ footer {
     </div>
   </div>
   <div class="item">
-    <img src=https://m.media-amazon.com/images/I/51tv4z2uAkL.jpg alt="Book 3">
+    <img src="https://m.media-amazon.com/images/I/51tv4z2uAkL.jpg" alt="Book 3">
     <h3>Portable juicer blender 3</h3>
     <p><b>RS 949</b></p>
     <div class="button-group">
@@ -438,7 +438,6 @@ footer {
 
   <form onsubmit="sendWhatsApp(event)">
     <input type="text" id="customerName" placeholder="Your Name" required>
-    <input type="email" id="customerEmail" placeholder="Your Email" required>
     <input type="tel" id="customerPhone" placeholder="Your Phone" required>
     <textarea id="address" rows="3" placeholder="Shipping Address" required></textarea>
     <button type="submit">Submit Order via WhatsApp</button>
@@ -457,7 +456,56 @@ footer {
 
 <section class="reviews-section">
   <h2>🌟 Customer Reviews</h2>
+
+  <div class="review">
+    <div class="review-avatar">A</div>
+    <div class="review-content">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      Absolutely love this portable juicer! Perfect for morning smoothies and super easy to clean. – Aarti S.
+    </div>
+  </div>
+
+  <div class="review">
+    <div class="review-avatar">R</div>
+    <div class="review-content">
+      <div class="stars">⭐⭐⭐⭐</div>
+      Works well and battery lasts longer than I expected. Great for travel and office use. – Rahul M.
+    </div>
+  </div>
+
+  <div class="review">
+    <div class="review-avatar">P</div>
+    <div class="review-content">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      Really happy with my purchase. The build quality feels solid and blends fruits smoothly. – Priya K.
+    </div>
+  </div>
+
+  <div class="review">
+    <div class="review-avatar">D</div>
+    <div class="review-content">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      Excellent product! I use it daily for protein shakes. Worth every rupee. – Deepak L.
+    </div>
+  </div>
+
+  <div class="review">
+    <div class="review-avatar">S</div>
+    <div class="review-content">
+      <div class="stars">⭐⭐⭐⭐</div>
+      Compact and powerful. Takes just a minute to make fresh juice anywhere. – Sneha P.
+    </div>
+  </div>
+
+  <div class="review">
+    <div class="review-avatar">K</div>
+    <div class="review-content">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      Amazing quality, and the free shipping was super fast! Highly recommend UsefullItems. – Karan V.
+    </div>
+  </div>
 </section>
+
 
 <section class="reviews-submit-section">
   <h2>✍️ Submit Your Review</h2>
@@ -526,12 +574,11 @@ function sendWhatsApp(event){
   event.preventDefault();
   if(cart.length===0){ alert("Please add at least one item."); return; }
   let name=document.getElementById("customerName").value;
-  let email=document.getElementById("customerEmail").value;
   let phone=document.getElementById("customerPhone").value;
   let address=document.getElementById("address").value;
   let cartDetails=cart.map((item,i)=>`${i+1}. ${item.title} (Qty: ${item.qty}) — ₹${item.price}`).join("\n");
   let total=cart.reduce((sum,item)=>sum+item.price,0);
-  let msg=`📦 New Order:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nItems:\n${cartDetails}\nTotal: ₹${total}\nAddress: ${address}`;
+  let msg=`📦 New Order:\nName: ${name}\nPhone: ${phone}\nItems:\n${cartDetails}\nTotal: ₹${total}\nAddress: ${address}`;
   window.open("https://wa.me/"+myWhatsAppNumber+"?text="+encodeURIComponent(msg),"_blank");
 }
 
